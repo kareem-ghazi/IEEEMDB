@@ -28,4 +28,44 @@
 
 ### API Design
 
-- .
+- Create movies with the specific meta-data.
+```
+POST /movies -> Movies[]
+{
+    name,
+    releaseDate,
+    duration,
+    description,
+    castMembers[]
+}
+```
+
+- Fetch a movie from the platform.
+```
+GET /movies/search?name={searchQuery}&time={dateRange} -> 2xx
+```
+
+- Create a movie list with a given set of Movies.
+```
+POST /movielist/ -> MovieList
+{
+    name,
+    Movies[],
+    description
+}
+```
+
+- Edit a movie list.
+```
+PATCH /movielist/{movielistId} -> 2xx
+{
+    name,
+    Movies[],
+    description
+}
+```
+
+### High-level Architecture
+
+File can be found in the repo with a `.excalidraw` extension.
+
