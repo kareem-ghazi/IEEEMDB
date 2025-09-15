@@ -9,9 +9,12 @@
 3. New movies are recommended to the user depending on their ratings and their reviews on similiar genres.
 4. Users can create their own lists and share them with other users.
 
-#### [Outscope]
+#### [Out of Scope]
 
-- .
+- Custom ratings for users who review with upvote system
+- Discussion forums about movies
+- Users can fork user lists and build upon existing ones
+- Movie of the week recommender that recommends the most popular movie currently
 
 ### Non-Functional Requirements
 
@@ -19,10 +22,17 @@
 2. The system should be able to handle high throughput during movie release events (250k+ users at a given moment).
 3. The system should be low latency (< 1 min to return movie search results & movie meta-data & reviews).
 
+#### [Out of Scope]
+
+- GDPR privacy and security system
+- Custom filtering for comments that break guidelines
+- Secure encryption for account security
+
 ### Data Model (Core Entities)
 
 - Movie
 - Movie Collections
+- 
 - Review
 - Users
 
@@ -43,6 +53,15 @@ POST /movies -> Movies[]
 - Fetch a movie from the platform.
 ```
 GET /movies/search?name={searchQuery}&time={dateRange} -> 2xx
+```
+
+- Add a review to a movie (get user data from header or JWToken).
+```
+POST /reviews/{movieid} -> 2xx
+{
+    comment,
+    date
+}
 ```
 
 - Create a movie list with a given set of Movies.
